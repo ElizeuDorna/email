@@ -1,4 +1,6 @@
-  private bool DisparaEmail(string Assunto, string CorpoEmail,string EmalDestino)
+C# Windows Forme
+
+private bool DisparaEmail(string Assunto, string CorpoEmail,string EmalDestino)
   {
 
       try
