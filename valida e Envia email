@@ -1,3 +1,33 @@
+  private bool DisparaEmail(string Assunto, string CorpoEmail,string EmalDestino)
+  {
+
+      try
+      {
+          EmailModel email = new EmailModel();
+                  var mail = new MailMessage();
+                  //de quem 
+                  mail.From = new MailAddress(email.Srv_usuario);
+                  //para quem
+                  mail.To.Add(EmalDestino);
+                  //conteudo
+                  mail.Subject = Assunto;
+                  mail.Body = CorpoEmail;
+                  //smtp
+                  var smtp = new SmtpClient(email.SrvSmtp, email.SrvPorta);
+                  smtp.EnableSsl = true;
+                  NetworkCredential cred = new NetworkCredential(email.Srv_usuario, email.SrvSenha);
+                  smtp.Credentials = cred;
+                  smtp.Send(mail);
+                  mail.Dispose();
+              return true;
+      }
+      catch
+      {
+          throw;
+      }
+
+
+  }
 
 
 public bool PreparaEmail(string Assunto, string CorpoEmail)
